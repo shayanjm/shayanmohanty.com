@@ -376,12 +376,13 @@ sub {
   	position:relative;
 
   }
-  #overlaplayer1{
-  	top:-17em;
+  .splashrowbottom{
+  	margin-bottom:25%;
   }
-  #overlaplayer2{
-  	top:-34em;
+  .splashrowtop{
+  	margin-top:10%;
   }
+
 
 	#splash a h1 span {
 		color:rgb(215,218,219);
@@ -508,7 +509,7 @@ html, body { height:100%; }
 	#splash a {
 		position:relative;
 		width:19em; /* 264/12 */
-		height:25em; /* 480/12 */
+		height:7em; /* 480/12 */
 		display:inline-block;
 		vertical-align: middle;
     	padding-left:2em;
@@ -525,6 +526,7 @@ html, body { height:100%; }
 	#splash a .description {
 		height:40em; /* 480/12 */
 		width:100%;
+		top:-5.5em;
 		clear:both;
 		display:table-cell;
 		vertical-align:middle;
