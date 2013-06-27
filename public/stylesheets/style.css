@@ -40,7 +40,7 @@ body {
 }
 
 body, button, input, select, textarea {
-	font: 1.2em/1.7em Din, 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font: 1.2em/1.7em 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 	color: #666;
 }
 
@@ -84,23 +84,6 @@ p, blockquote, q, pre, address, hr, code, samp, dl, ol, ul, form, table, fieldse
 		width:83.5%;
 	}
 
-	.blog .container {
-		max-width:1600px;
-		margin:0;
-	}
-
-	.page-template-page-column-php .container {
-		max-width:1400px;
-		margin:0;
-	}
-
-	body.blog {
-		background:#fff url(img/blog-texture.png) repeat-y 1600px 0;
-	}
-
-	body.page-template-page-column-php {
-		background:#fff url(img/blog-texture.png) repeat-y 1400px 0;
-	}
 
 /* Other */
 .alignleft {
@@ -390,6 +373,8 @@ sub {
   }
   #splashrow{
   	width:100%;
+  	position:relative;
+
   }
   #overlaplayer1{
   	top:-17em;
@@ -411,7 +396,7 @@ sub {
 	}
 
 	#splash a .description p {
-		font:normal 1.2em/1.2em Din, 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+		font:normal 1.2em/1.2em 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 		color:#666;
 		text-align:center;
 		margin:0;
@@ -419,14 +404,6 @@ sub {
 		letter-spacing:-0.01em;
 	}
 
-		.page-template-page-sitemap-php #splash a .description p {
-			font-size:1em;
-			line-height:1.7em;
-			text-transform:none;
-			color:#666;
-			width:200px;
-			margin:0 auto;
-		}
   .wrap .headtitle {
     font-size:5em;
     line-height:1.7em;
@@ -538,30 +515,12 @@ html, body { height:100%; }
     	padding-right:2em;
 	}
 
-		.page-template-page-sitemap-php #splash a {
-			width:31.6666%;
-			max-width:100%;
-			height:auto;
-			vertical-align:top;
-			padding:0 .83333%; /* 0 10px @ 1200px */
-		}
-
-		.page-template-page-sitemap-php #splash a.left h1,
-		.page-template-page-sitemap-php #splash a.left p {
-			float:right;
-		}
-
 	#splash a h1 {
 		margin:0;
 		position:absolute;
 		top:41.5%;
 		z-index:auto;
 	}
-
-		.page-template-page-sitemap-php #splash a h1 {
-			position:static;
-			margin:0 auto;
-		}
 
 	#splash a .description {
 		height:40em; /* 480/12 */
@@ -577,8 +536,8 @@ html, body { height:100%; }
 	}
 
 		#splash a .description p {
-			font:3.5em/1.12em 'Din Cond', 'Open Sans Condensed', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-			color:#2d2d2d;
+			font:3.5em/1.12em 'Open Sans Condensed', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+			color:#FFFFFF;
 			padding:.57em 0;
 			text-align:left;
       z-index:2;
