@@ -369,19 +369,37 @@ sub {
   .bluebg{
     background:#74AFAD;
   }
+  .redbg{
+  	background:rgb(255,127,109);
+  }
+  .brownbg{
+  	background:rgb(185,102,80);
+  }
   .blue{
     color:#74AFAD;
   }
   .orange{
-    color:rgb(255,190,77);
+    color:rgb(255,225,167);
+  }
+  .red{
+  	color:rgb(255,127,109);
   }
   #splashwrapper{
     z-index:-2;
-    background:rgb(255,190,77);
+    background:rgb(255,225,167);
+  }
+  #splashrow{
+  	width:100%;
+  }
+  #overlaplayer1{
+  	top:-17em;
+  }
+  #overlaplayer2{
+  	top:-34em;
   }
 
 	#splash a h1 span {
-		color:rgb(255,190,77);;
+		color:rgb(255,225,167);
 	}
 
 	#splash a .description {
@@ -512,11 +530,12 @@ html, body { height:100%; }
 
 	#splash a {
 		position:relative;
-		width:22em; /* 264/12 */
-		height:40em; /* 480/12 */
+		width:19em; /* 264/12 */
+		height:25em; /* 480/12 */
 		display:inline-block;
 		vertical-align: middle;
-    padding-left:2em;
+    	padding-left:2em;
+    	padding-right:2em;
 	}
 
 		.page-template-page-sitemap-php #splash a {
