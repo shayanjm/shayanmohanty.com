@@ -4,7 +4,6 @@ Module dependencies.
 ###
 express = require("express")
 routes = require("./routes")
-user = require("./routes/user")
 http = require("http")
 path = require("path")
 app = express()
@@ -21,7 +20,8 @@ app.use express.static(path.join(__dirname, "public"))
 
 # development only
 app.use express.errorHandler()  if app.get("env") is "development"
+app.on "error", (err) ->
+	console.error "Houston, we have a problem: " + err
 app.get "/", routes.index
-app.get "/users", user.list
 http.createServer(app).listen app.get("port"), ->
   console.log "Landing page running on port " + app.get("port") + " in " + app.get("env") + " mode."
