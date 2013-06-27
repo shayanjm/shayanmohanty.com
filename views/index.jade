@@ -1,5 +1,68 @@
-extends layout
+html(class='site', dir='ltr', lang='en-US', prefix='og: http://ogp.me/ns#')
+	head
+		meta(charset='UTF-8')
+		meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
+		link(rel='shortcut icon', href='/images/favicon.png')
+		title Shayan Mohanty
 
-block content
-  h1= title
-  p Welcome to #{title}
+		//- Meta Tags
+		meta(name='viewport', content='width=device-width', initial-scale='1.0')
+		
+		<!-- JavaScript -->
+		<!--[if IE]><![endif]-->
+		<!--[if lt IE 9]>
+		<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		meta(name='description', content='Shayan Mohanty')
+		link(rel='canonical', href='http://www.shayanmohanty.com/')
+		meta(property='og:locale', content='en_US')
+		meta(property='og:type', content='article')
+		meta(property='og:title', content='Shayan Mohanty')
+		meta(property='og:description', content='Shayan Mohanty')
+		meta(property='og:url', content='http://www.shayanmohanty.com/')
+		meta(property='og:site_name', content='Shayan Mohanty')
+
+		link(rel='stylesheet', id='style-css', href='/stylesheets/style.css', type='text/css', media='all')
+	body
+		div(class='wrap')
+			p(class='headtitle')
+				|Hi I'm&nbsp;
+				strong(class='orange')
+					|Shayan Mohanty
+			div(id='splashwrapper')
+				div(id='splash', class='text-center')
+					a(href='https://www.github.com/shayanjm/')
+						h1(class='bluebg')
+							span
+								|Build
+						div(class='description')
+							p(class='part_1')
+								|I like to build&nbsp;cool things
+							p(class='part_2')
+								|Here's what I&nbsp;
+								strong
+									|Create
+
+					a(href='https://www.linkedin.com/in/shayanjm/')
+						h1(class='bluebg')
+							span
+								|Write
+						div(class='description')
+							p(class='part_1')
+								|Occassionally I have a few&nbsp;things to write.
+							p(class='part_2')
+								|Here's how I&nbsp;
+								strong
+									|Think
+
+					a(href='https://www.linkedin.com/in/shayanjm/')
+						h1(class='bluebg')
+							span
+								|Repeat
+						div(class='description')
+							p(class='part_1')
+								|And as always,&nbsp;I rinse and repeat.
+							p(class='part_2')
+								|Here's What I've&nbsp;
+								strong
+									|Done
