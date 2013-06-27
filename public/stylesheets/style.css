@@ -367,13 +367,13 @@ sub {
     opacity:0.9;
 	}
   .bluebg{
-    background:#74AFAD;
+    background:rgb(109,188,219);
   }
   .redbg{
-  	background:rgb(255,127,109);
+  	background:rgb(252,67,73);
   }
   .brownbg{
-  	background:rgb(185,102,80);
+  	background:rgb(44,62,80);
   }
   .blue{
     color:#74AFAD;
@@ -382,11 +382,11 @@ sub {
     color:rgb(255,225,167);
   }
   .red{
-  	color:rgb(255,127,109);
+  	color:rgb(252,67,73);
   }
   #splashwrapper{
     z-index:-2;
-    background:rgb(255,225,167);
+    background:rgb(215,218,219);
   }
   #splashrow{
   	width:100%;
@@ -399,7 +399,7 @@ sub {
   }
 
 	#splash a h1 span {
-		color:rgb(255,225,167);
+		color:rgb(215,218,219);
 	}
 
 	#splash a .description {
