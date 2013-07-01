@@ -9,10 +9,7 @@ routes = require("./routes")
 http = require("http")
 path = require("path")
 scrape = require("./core/scrape")
-request = require("request")
-jsdom = require("jsdom")
 async = require("async")
-url = require("url")
 log = require("logg").getLogger("SM.main")
 
 
@@ -33,30 +30,7 @@ app.on "error", (err) ->
 
 # Routes
 app.get "/", routes.index
-
-app.get "/scrape", (req, res) ->
-  
-  # Scraping Medium.com profile
-  request
-    uri: "http://medium.com/@shayanjm"
-  , (err, response, body) ->
-    self = this
-    self.items = new Array() #I feel like I want to save my results in an array
-    
-    # Checking for errors
-    console.log "Request error."  if err and response.statusCode isnt 200
-    
-    # Send the body param as the HTML code we will parse in jsdom
-    # also tell jsdom to attach jQuery in the scripts and loaded from jQuery.com
-    jsdom.env
-      html: body
-      scripts: ["http://code.jquery.com/jquery-1.6.min.js"]
-    , (err, window) ->
-      
-      #Use jQuery just as in a regular HTML page
-      $ = window.jQuery
-      console.log $(".post-item-title").text()
-      res.end $(".post-item-title").text()
+app.get "/scrape", scrape.start
 
 
 # Initialization
