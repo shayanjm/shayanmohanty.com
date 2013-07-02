@@ -6,7 +6,9 @@ Dependencies
 ============
 This project uses `CoffeeScript`. The easiest way to install it:
 
+
 `sudo npm install coffee-script -g`
+
 
 Install Instructions
 ====================
