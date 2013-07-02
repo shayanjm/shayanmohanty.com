@@ -28,11 +28,6 @@ app.use express.errorHandler()  if app.get("env") is "development"
 app.on "error", (err) ->
 	console.error "Houston, we have a problem: " + err
 
-# Routes
-app.get "/", routes.index
-app.get "/scrape", scrape.getLatest
-
-
 # Initialization
 initSequence = [scrape.init]
 
@@ -52,6 +47,12 @@ async.series initSequence, (err) ->
   else
     log.info "init() :: Initialization Complete"
     return
+
+
+# Routes
+app.get "/", routes.index
+app.get "/scrape", scrape.getLatest
+
 
 
 # And finally
