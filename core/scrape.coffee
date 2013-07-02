@@ -13,7 +13,7 @@ scraper.init = (done) ->
   log.info "init() :: Host is currently:", host
   done()
 
-scraper.getLatest = (done, res) ->
+scraper.getLatest = (req, res) ->
   # Scraping Medium.com profile for latest posts @ count
   user = "Vlokshin"
   count = 2
@@ -49,13 +49,15 @@ scraper.getLatest = (done, res) ->
       res.end "Done!"
 
 
-scraper.getRecommended = (done, res) ->
+scraper.getRecommended = (req, res) ->
   # TODO - REPLICATE getLatest()
   # Scraping Medium.com profile for recommended post
-  user = "shayanjm"
+  user = "Vlokshin"
   request
     uri: host+user
   , (err, response, body) ->
+    self = this
+    self.items = new Array()
 
     # Checking for errors
     log.error "getRecommended() :: Mission Failed:", err if err and response.statusCode isnt 200
@@ -66,7 +68,16 @@ scraper.getRecommended = (done, res) ->
     , (err, window) ->
 
       $ = window.jQuery
-      log.info "getRecommended() :: Scraper returned", $(".post-item-title:lt(1)").append("\n").html()
-      res.end $(".post-item-title:lt(1)").append("\n").html()
-      done()
+      $entries = $("body").find(".post-item-title:lt(1)")
+
+      $entries.each (i, item) ->
+        $title = $(item).children("a").text()
+        $href = $(item).children("a").attr("href")
+        $_href = "http://www.medium.com" + $href
+
+        self.items[i] =
+          title: $title
+          href: $_href
+      log.info "getRecommended() :: Scraper returned", self.items
+      res.end "Done!"
 

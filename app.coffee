@@ -51,7 +51,8 @@ async.series initSequence, (err) ->
 
 # Routes
 app.get "/", routes.index
-app.get "/scrape", scrape.getLatest
+app.get "/getlatest", scrape.getLatest
+app.get "/getrecommended", scrape.getRecommended
 
 
 
