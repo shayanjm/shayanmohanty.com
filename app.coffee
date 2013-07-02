@@ -30,19 +30,21 @@ app.on "error", (err) ->
 
 # Routes
 app.get "/", routes.index
-app.get "/scrape", scrape.start
+app.get "/scrape", scrape.getLatest
 
 
 # Initialization
 initSequence = [scrape.init]
 
 log.info "init() :: Beginning initialization sequence..."
+# Socket.IO Polling configuration
 io = require('socket.io').listen(server)
 log.info "init() :: Configuring Socket.IO for Long-Polling..."
 io.configure ->
   io.set "transports", ["xhr-polling"]
   io.set "polling duration", 10
 log.info "init() :: Long-Polling configuration done!"
+# The rest of the initialization sequence
 async.series initSequence, (err) ->
   if err
     log.warn "init() :: Failed to initialize. Error:", err
