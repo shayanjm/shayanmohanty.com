@@ -13,6 +13,7 @@ async = require("async")
 log = require("logg").getLogger("SM.main")
 
 
+
 # all environments
 app.set "port", process.env.PORT or 3000
 app.set "views", __dirname + "/views"
@@ -48,7 +49,54 @@ async.series initSequence, (err) ->
     log.info "init() :: Initialization Complete"
     return
 
+# Socket.IO Stuff for medium.com scraper
+io.sockets.on "connection", (socket) ->
+  getLatest
 
+  socket.on "successevent", (data) ->
+    log.info data
+
+getLatest = (cb, req, res) ->
+  # Scraping Medium.com profile for latest posts @ count
+  articles = []
+  user = "Vlokshin"
+  count = 2
+  request
+    uri: host+user+"/latest/"
+  , (err, response, body) ->
+    self = this
+    self.items = new Array()
+    # Checking for errors
+    log.error "getLatest() :: Mission Failed:", err if err and response.statusCode isnt 200
+
+    # Passing callback
+    if cb
+      cb(body)
+      return
+    # Send the body param as the HTML code we will parse in jsdom
+    # also tell jsdom to attach jQuery in the scripts and loaded from jQuery.com
+    jsdom.env
+      html: body
+      scripts: ["http://code.jquery.com/jquery-1.6.min.js"]
+    , (err, window) ->
+
+      # Use jQuery just as in a regular HTML page
+      $ = window.jQuery
+
+      $entries = $("body").find(".post-item-title:lt("+count+")")
+
+      $entries.each (i, item) ->
+        $title = $(item).children("a").text()
+        $href = $(item).children("a").attr("href")
+        $_href = "http://www.medium.com" + $href
+
+        self.items[i] =
+          title: $title
+          href: $_href
+        articles = self.items
+      socket.emit("articles", articles)
+      log.info "getLatest() :: Scraper returned", articles
+      res.end "Done!"
 # Routes
 app.get "/", routes.index
 app.get "/getlatest", scrape.getLatest

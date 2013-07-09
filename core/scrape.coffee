@@ -13,8 +13,9 @@ scraper.init = (done) ->
   log.info "init() :: Host is currently:", host
   done()
 
-scraper.getLatest = (req, res) ->
+scraper.getLatest = (cb, req, res) ->
   # Scraping Medium.com profile for latest posts @ count
+  articles = []
   user = "Vlokshin"
   count = 2
   request
@@ -25,6 +26,10 @@ scraper.getLatest = (req, res) ->
     # Checking for errors
     log.error "getLatest() :: Mission Failed:", err if err and response.statusCode isnt 200
 
+    # Passing callback
+    if cb
+      cb(body)
+      return
     # Send the body param as the HTML code we will parse in jsdom
     # also tell jsdom to attach jQuery in the scripts and loaded from jQuery.com
     jsdom.env
@@ -45,7 +50,9 @@ scraper.getLatest = (req, res) ->
         self.items[i] =
           title: $title
           href: $_href
-      log.info "getLatest() :: Scraper returned", self.items
+        articles = self.items
+      articles
+      log.info "getLatest() :: Scraper returned", articles
       res.end "Done!"
 
 
